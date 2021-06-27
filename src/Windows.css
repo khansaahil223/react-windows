@@ -1,0 +1,19 @@
+.Windows {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+.start-menu-animation {
+    position: fixed;
+    bottom:6vh;
+    width: 35vw;
+    height: 65vh;
+    background: rgb(0 128 128 / 80%);
+    display: flex;
+}
+
+:root {
+  --animate-duration: .2s!important;
+}

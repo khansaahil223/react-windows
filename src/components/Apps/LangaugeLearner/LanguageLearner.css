@@ -1,0 +1,36 @@
+.language-learner{
+    width:100%;
+    height: 100%;
+    position: relative;
+}
+.language-learner-hamburger{
+    width:3vw;
+    position: fixed;
+    z-index: 1;
+}
+.language-learner-sidebar{    
+    left: 0;    
+    width:30%;
+    height: 100%;
+    display: flex;    
+    align-items: center;
+    background: teal;
+    float:left;
+    clear: left;
+}
+.language-learner-sidebar-items{
+    display: flex;
+    flex-direction: column;  
+    width: 100%;  
+    align-items: center;
+}
+.language-learner-sidebar-item{
+    width:70%;
+    height:4vh;    
+    display: flex;    
+}
+
+.language-learner-content {
+    float: left;
+    height: 100%;
+}

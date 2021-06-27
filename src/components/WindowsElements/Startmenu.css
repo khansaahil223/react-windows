@@ -1,0 +1,25 @@
+.start-menu{
+    position: fixed;    
+    width: 35vw;
+    height: 65vh;
+    background: rgb(0 128 128 / 80%);
+    display: flex;
+}
+.start-menu-left{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.start-menu-right{
+    width: 55%;
+    height: 100%;
+}
+.start-menu-left li{
+    list-style: none;
+    background-color: aquamarine;
+    cursor:default;
+    margin:10% 0%;
+    padding:5% 0%;
+}
