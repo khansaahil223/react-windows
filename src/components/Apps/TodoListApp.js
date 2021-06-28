@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './TodoListApp.css'
 
-import {MdCheckBox,MdCheckBoxOutlineBlank,MdIndeterminateCheckBox} from 'react-icons/md'
+import {MdCheckBox,MdCheckBoxOutlineBlank,/* MdIndeterminateCheckBox */} from 'react-icons/md'
 
 export default function TodoListApp() {
     const [items, setItems] = useState([])

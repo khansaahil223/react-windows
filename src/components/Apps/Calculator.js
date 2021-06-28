@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 import React from 'react'
 
 import './Calculator.css'
@@ -23,15 +24,11 @@ export default class Calculator extends React.Component {
         }        
         const setAllowConcat = (allowConcat)=>{
             this.setState({allowConcat:allowConcat})
-        }        
-        const setAllowDot = (allowDot)=>{
-            this.setState({allowDot:allowDot})
-        }        
+        }                   
 
         const displayText = this.state.displayText
         const fullOperation = this.state.fullOperation        
-        const allowConcat = this.state.allowConcat        
-        const allowDot = this.state.allowDot        
+        const allowConcat = this.state.allowConcat                      
 
         const clearFullOperationOnEquals = ()=>{
             if(fullOperation[fullOperation.length-1]==="="){
@@ -77,16 +74,16 @@ export default class Calculator extends React.Component {
                 }
             }                
                 
-            setAllowDot(true)        
+                    
         }
         if(keyText==="clear"){
             setDisplayText("0")
             setFullOperation("")
-            setAllowDot(true)
+            
         }
         if(keyText==="CE"){
             setDisplayText("0")    
-            setAllowDot(true)
+            
             clearFullOperationOnEquals()
         }
         if(keyText==="="){
@@ -101,7 +98,7 @@ export default class Calculator extends React.Component {
             }
             setFullOperation(expression.replaceAll("*","x")+"=")
             setAllowConcat(false)
-            setAllowDot(true)
+            
         }
         if(keyText==="signChange") {
             if(displayText!=="0")
@@ -110,7 +107,7 @@ export default class Calculator extends React.Component {
         if(keyText===".") {
             if(displayText.indexOf(".")===-1){
                 setDisplayText(displayText+".")
-                setAllowDot(false)
+                
             }
         } 
         const sigleOperateDisplayText = (expression,fixed=2) =>{

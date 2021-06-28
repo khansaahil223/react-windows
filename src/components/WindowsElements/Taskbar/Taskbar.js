@@ -43,7 +43,7 @@ export default class Taskbar extends React.Component {
                                 this.props.setStartMenuShowing(!this.props.startMenuShowing)                             
                             }}
                         >
-                        <img src={windowsLogo}/>
+                        <img src={windowsLogo} alt="GO"/>
                         </div>
                         <div className="taskbar-icons">
                         {
