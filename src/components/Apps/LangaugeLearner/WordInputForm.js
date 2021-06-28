@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React,{useState,useEffect} from 'react'
+import { IconContext } from 'react-icons'
+import { GrRevert } from 'react-icons/gr'
 
 import './WordInputForm.css'
 
@@ -16,7 +18,7 @@ export default function WordInputForm(props) {
     const setVisible = props.setShowHover
 
     useEffect(() => {
-        var data = JSON.stringify({"q":selectedWord,"source":"ru","target":"en"});
+        var data = JSON.stringify({"q":selectedWord.replace(/[^\u0400-\u04FF]/,''),"source":"ru","target":"en"});
 
         var config = {
             method: 'post',
@@ -40,11 +42,13 @@ export default function WordInputForm(props) {
 
     return (
         <div className="language-learner-word-input">
-            <div className="language-learner-word-input-row">Selected Word:{selectedWord}</div>  
-            <div className="language-learner-word-input-row">Word Stem:{wordStem}</div>
+            <div className="language-learner-word-input-row">Selected Word:<div>{selectedWord.replace(/[^\u0400-\u04FF]/,'')}</div></div>  
+            <div className="language-learner-word-input-row">Word Stem:<div>{wordStem}</div></div>
             <div className="language-learner-word-input-row">Meaning:
-                <input value={translationInput} onChange={e=>setTranslationInput(e.target.value)}></input> 
-                <div className="language-learner-word-input-clear-button" onClick={()=>setTranslationInput(translation)}>X</div>
+                <input value={translationInput} onChange={e=>setTranslationInput(e.target.value)}></input>                 
+                <IconContext.Provider value={{className:"language-learner-word-input-clear-button"}}>
+                    <GrRevert onClick={()=>setTranslationInput(translation)}></GrRevert>
+                </IconContext.Provider>                
             </div>
             <div onClick={
                 e=>{

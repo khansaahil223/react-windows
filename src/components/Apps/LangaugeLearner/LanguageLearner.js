@@ -15,12 +15,25 @@ export default class LanguageLearner extends React.Component {
 
     constructor(props){
         super(props)
-        this.state={currentPage:"home",showSidebar:false,sidebarAnimation:"animate__zoomInLeft"}
+        this.state={currentPage:"home",showSidebar:false,sidebarAnimation:"animate__zoomOutLeft"}
     }
 
     render(){
         return <div className = "language-learner">
-            <div className="language-learner-hamburger" onClick={()=>{this.setState({showSidebar:!this.state.showSidebar})}}>
+            <div className="language-learner-hamburger" 
+                onClick={()=>
+                    {
+                        let duration
+                        if(this.state.sidebarAnimation==="animate__zoomInLeft")
+                            duration = 200
+                        else
+                            duration = 0
+                        this.setState({
+                            sidebarAnimation:this.state.sidebarAnimation==="animate__zoomInLeft"?"animate__zoomOutLeft":"animate__zoomInLeft"                                                       
+                        })
+                        setTimeout(()=>this.setState({showSidebar:!this.state.showSidebar}),duration) 
+                    }
+                }>
                 <GiHamburgerMenu></GiHamburgerMenu>
             </div>
             {
@@ -32,7 +45,8 @@ export default class LanguageLearner extends React.Component {
                                 return <div className="language-learner-sidebar-item" 
                                 onClick={
                                     ()=>{                                    
-                                        this.setState({currentPage:page})
+                                        this.setState({currentPage:page,sidebarAnimation:"animate__zoomOutLeft"}) 
+                                        setTimeout(()=>this.setState({showSidebar:false}),200)                                                                               
                                         }
                                 }
                                 key={page}

@@ -11,6 +11,7 @@
     margin: 2% 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .language-learner-word-input-button{
@@ -28,7 +29,7 @@
 }
 .language-learner-word-input-clear-button {
     position: relative;
-    left: -14px;
+    left: -10%;
     cursor: default;
     color: red;
 }

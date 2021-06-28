@@ -9,6 +9,10 @@ import React, { Component } from 'react'
 
 import Homescreen from './components/AndroidElements/Homescreen';
 import AndroidBottomBar from './components/AndroidElements/AndroidBottomBar';
+
+import Toast from './components/Toast'
+
+import reactDom from 'react-dom';
 export default class Android extends Component {
 
     animationTimeOutLength = 200
@@ -41,15 +45,21 @@ export default class Android extends Component {
         this.setState({currentApp:Homescreen})
     }
 
+    toast(message,duration){      
+      reactDom.render(<Toast key={Math.random()} duration={duration} message={message} style={{width:"200px",fontSize: "medium"}}/>,
+        document.getElementsByClassName("toast-holder")[0])      
+    }
+
     render() {
         return (
             <div className="Android" style={{backgroundImage:`url(${background})`}} onContextMenu={(e)=>e.preventDefault()}>
-              <div className="android-app-content" style={{background:this.state.currentApp===Homescreen?"inherit":undefined}}>
-                  <this.state.currentApp openApp={this.openApp}/>
-              </div>                
-              <div className="android-bottom-bar">
-                  <AndroidBottomBar goHome={this.goHome}></AndroidBottomBar>
-              </div>
+                <div className="android-app-content" style={{background:this.state.currentApp===Homescreen?"inherit":undefined}}>
+                    <this.state.currentApp openApp={this.openApp} toast={this.toast}/>
+                    <div className="toast-holder"></div>
+                </div>                
+                <div className="android-bottom-bar">
+                    <AndroidBottomBar goHome={this.goHome}></AndroidBottomBar>
+                </div>                
             </div>
         )
     }

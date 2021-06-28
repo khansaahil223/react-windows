@@ -13,8 +13,8 @@ export default function Homescreen(props) {
             <div className="homescreen-icon-grid">
             {
                 InstalledApplications.map((ia=>{
-                    return <div className="homescreen-icon-grid-item">
-                        <IconContext.Provider value={{className:"homescreen-icon"}} key={ia.name} >
+                    return <div className="homescreen-icon-grid-item"  key={ia.name}>
+                        <IconContext.Provider value={{className:"homescreen-icon"}} >
                             <ia.Icon onClick={()=>openApp(ia)}></ia.Icon>
                         </IconContext.Provider>
                         <div  className="homescreen-icon-label">{ia.name}</div>
