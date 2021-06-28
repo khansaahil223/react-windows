@@ -1,0 +1,19 @@
+.Android {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+:root {
+  --animate-duration: .2s!important;
+}
+.android-app-content{
+  height: 90%;
+  width: 100%;  
+  background-color: grey;
+}
+.android-bottom-bar{
+  height: 10%;
+  width: 100%;
+}
