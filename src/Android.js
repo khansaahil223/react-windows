@@ -1,8 +1,6 @@
 
 import './Android.css';
 
-import Taskbar from './components/WindowsElements/Taskbar/Taskbar';
-
 import background from './android-background.jpg'
 
 import '../node_modules/animate.css/animate.min.css'
@@ -26,7 +24,7 @@ export default class Android extends Component {
     openApp (application){  
           let appID = `app${this.state.openApps.length+1}`
 
-          const {name,Icon,Content,rndProps} = application
+          const {name,Icon,Content} = application
 
           this.setState({currentApp:application.Content})
           const appObject = {

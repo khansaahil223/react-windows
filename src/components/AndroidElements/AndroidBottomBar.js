@@ -4,7 +4,7 @@ import './AndroidBottomBar.css'
 
 import { IconContext } from 'react-icons'
 
-import {AiFillHome,AiOutlineRollback,AiOutlineRetweet} from 'react-icons/ai'
+import {AiFillHome,/* AiOutlineRollback,AiOutlineRetweet */} from 'react-icons/ai'
 
 export default function AndroidBottomBar(props) {
 
