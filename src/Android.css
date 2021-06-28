@@ -1,11 +1,11 @@
 .Android {
   text-align: center;
   width: 100vw;
-  height: 94vh;
+  height: 92vh;
   position: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-bottom: 6vh;
+  margin-bottom: 8vh;
 }
 
 :root {
