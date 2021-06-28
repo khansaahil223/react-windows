@@ -49,3 +49,6 @@
     justify-content: center;
     align-items: center;    
 }
+.calculator-button:hover{
+    background-color: teal;
+}
