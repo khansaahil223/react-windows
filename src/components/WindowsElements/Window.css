@@ -40,9 +40,13 @@
     width:5vw;
     justify-content: space-between;
 }
+.window-title-bar-button:hover{
+    background-color: teal;
+    color: white;
+}
 .window-title-bar-button {    
     display: flex;    
-    color: rgba(0, 128, 128, 0.787);
+    color: teal;
     align-items: center;   
     width: 33%;
     height: 100%;

@@ -67,13 +67,13 @@ export default function Window(props) {
                             <div className="window-title-bar-buttons">
                                 
                                 <div className="window-title-bar-button" onClick={()=>windowObject.closeWindow()}>
-                                    <IconContext.Provider value={{ color: "teal", className: "window-title-bar-button-icon"}}>
+                                    <IconContext.Provider value={{  className: "window-title-bar-button-icon"}}>
                                         <VscClose></VscClose>
                                     </IconContext.Provider>                                    
                                 </div>
 
                                 <div className="window-title-bar-button" onClick={()=>windowObject.toggleWindowMaximizeRestore()}>
-                                    <IconContext.Provider value={{ color: "teal", className: "window-title-bar-button-icon"}}>
+                                    <IconContext.Provider value={{  className: "window-title-bar-button-icon"}}>
                                         {
                                             !windowObject.maximized?
                                                 <VscChromeMaximize></VscChromeMaximize>:
@@ -83,7 +83,7 @@ export default function Window(props) {
                                 </div>
                                 
                                 <div className="window-title-bar-button" onClick={()=>windowObject.minimizeWindow()}>
-                                    <IconContext.Provider value={{ color: "teal", className: "window-title-bar-button-icon"}}>
+                                    <IconContext.Provider value={{  className: "window-title-bar-button-icon"}}>
                                         <VscChromeMinimize></VscChromeMinimize>
                                     </IconContext.Provider>
                                 </div>
