@@ -49,4 +49,8 @@
     position: absolute;
     right: -13px;
     top: -14px;
+    cursor:default;
+}
+.language-learner-reading-hover-close:hover{
+    background-color: #048888;    
 }

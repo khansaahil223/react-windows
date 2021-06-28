@@ -1,7 +1,7 @@
 .context-menu{
     position:fixed;    
     width: 125px;    
-    height:250px;
+    
     background:#2dbb14;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     z-index: 2000;
 }
 .context-menu-button{
-    width: 80%;    
+    width: 100%;    
     display: flex;
     cursor: default;
     user-select: none;

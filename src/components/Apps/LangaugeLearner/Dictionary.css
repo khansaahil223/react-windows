@@ -1,0 +1,34 @@
+.language-learner-dictionary{
+    width: 100%;   
+    height: 100%;
+    display: flex;
+    flex-direction: column;    
+}
+
+.language-learner-dictionary-list{
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.language-learner-dictionary-list-item-holder{
+    background-color: teal;
+    width:23%;
+    height: 125px;
+    margin: 2% 1%;
+}
+.language-learner-dictionary-list-word{
+    height: 50%;
+    width: 100%;
+    background-color: rgb(185, 124, 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.language-learner-dictionary-list-meaning{
+    height: 50%;
+    width: 100%;
+    background-color: darkgoldenrod;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

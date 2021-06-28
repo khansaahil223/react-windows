@@ -32,11 +32,15 @@ export default class Windows extends Component {
         this.minimizeWindow = this.minimizeWindow.bind(this)        
         this.setStartMenuShowing = this.setStartMenuShowing.bind(this)        
         this.toast = this.toast.bind(this)        
+        this.toastGeneral = this.toastGeneral.bind(this)        
     }
 
-    toast(windowID,message,duration){
-      console.log(document.getElementsByClassName(windowID+"toast")[0])
+    toast(windowID,message,duration){      
       reactDom.render(<Toast key={Math.random()} duration={duration} message={message}/>,document.getElementsByClassName(windowID+"toast")[0])      
+    }
+    toastGeneral(message,duration){      
+      reactDom.render(<Toast key={Math.random()} duration={duration} message={message} style={{width:"200px",fontSize: "medium"}}/>,
+        document.getElementsByClassName("toast-holder")[0])      
     }
 
     openWindow (application){  
@@ -129,7 +133,7 @@ export default class Windows extends Component {
   }
 
   closeWindow (windowID){   
-        this.updateWindowProperty(windowID,"animation","animate__hinge")
+        this.updateWindowProperty(windowID,"animation","animate__rotateOutDownRight")
     setTimeout(()=>{        
       this.removeWindow(windowID)                                     
     },this.animationTimeOutLength)
@@ -181,12 +185,16 @@ export default class Windows extends Component {
     render() {
         return (
             <div className="Windows" style={{backgroundImage:`url(${background})`}} onContextMenu={(e)=>e.preventDefault()}>
-                <Desktop openWindows={this.state.openWindows} setStartMenuShowing={this.setStartMenuShowing} />   
+                <Desktop 
+                        openWindows={this.state.openWindows} 
+                        setStartMenuShowing={this.setStartMenuShowing}
+                        toastGeneral={this.toastGeneral}
+                        />   
                 <Animated 
                     animationIn="animate__fadeInUp" 
                     animationOut="animate__fadeOutDown"         
                     isVisible={this.state.startMenuShowing}
-                    className="start-menu-animation"
+                    className="start-menu-animation"                    
                     >
                     <Startmenu openWindow={this.openWindow} setStartMenuShowing={this.setStartMenuShowing} />
                 </Animated>          
@@ -196,6 +204,7 @@ export default class Windows extends Component {
                     startMenuShowing={this.state.startMenuShowing} setStartMenuShowing={this.setStartMenuShowing}
                     updateWindowProperty={this.updateWindowProperty}             
                 />
+                
             </div>
         )
     }

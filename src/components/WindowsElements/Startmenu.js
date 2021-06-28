@@ -12,17 +12,17 @@ export default function Startmenu(props) {
     } = props
 
     return (
-    <div className="start-menu" >
+    <div className="start-menu" style={{bottom:0}}>
         <div className="start-menu-left">
-            <ul>
+            <div className="start-menu-app-list">
             {
                 InstalledApplications.map(((ia,index)=>{
-                    return <li key={index} onClick={
+                    return <div key={index} className="start-menu-app-list-item" onClick={
                         ()=>{
                                 openWindow(ia)
                                 setStartMenuShowing(false)
                             }
-                        }>{ia.name}</li>
+                        }>{ia.name}</div>
                 }))
             }
                 {/* <li onClick={()=>{
@@ -45,7 +45,7 @@ export default function Startmenu(props) {
                     setStartMenuShowing(false)
                     }
                     }>Todo List</li> */}
-            </ul>
+            </div>
         </div>
         <div className="start-menu-right">
 

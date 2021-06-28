@@ -1,0 +1,35 @@
+.language-learner-dictionary-inputs-holder{
+    width:100%;
+    height: 20%;
+    margin: 4% 0%;
+    display: flex;   
+    flex-direction: column;
+    align-items: center; 
+}
+
+.language-learner-dictionary-input-holder{
+    display: flex;    
+    align-items: center;
+    justify-content: space-evenly;
+    width:65%;
+}
+.language-learner-dictionary-label{
+    display:flex;
+}
+.language-learner-dictionary-input{
+    display:flex;
+}
+.language-learner-dictionary-input-button{
+    margin-top: 2%;
+    width:50px;
+    height: 50px;
+    font-size: x-large;
+    background-color: teal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+.language-learner-dictionary-input-button:hover{
+    background-color: rgb(1, 93, 93);
+}

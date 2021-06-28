@@ -10,7 +10,7 @@
 }
 .language-learner-sidebar{    
     left: 0;    
-    width:30%;
+    width:33%;
     height: 100%;
     display: flex;    
     align-items: center;
@@ -25,7 +25,7 @@
     align-items: center;
 }
 .language-learner-sidebar-item{
-    width:70%;
+    width:93%;
     height:4vh;    
     display: flex;    
 }
@@ -33,4 +33,5 @@
 .language-learner-content {
     float: left;
     height: 100%;
+    user-select: text;
 }

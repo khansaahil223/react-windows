@@ -1,4 +1,37 @@
 .language-learner-word-input{
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.language-learner-word-input-row{
+    width: 100%;
+    margin: 2% 0;
+    display: flex;
+    justify-content: center;
+}
+
+.language-learner-word-input-button{
+    cursor: default;
+    margin-top:3%;
+    background-color: orange;
+    width:78%;
+    height: 17%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.language-learner-word-input-button:hover{
+    background-color: rgb(207, 137, 7);
+}
+.language-learner-word-input-clear-button {
+    position: relative;
+    left: -14px;
+    cursor: default;
+    color: red;
+}
+.language-learner-word-input-clear-button:hover {
+    background-color: grey;
 }

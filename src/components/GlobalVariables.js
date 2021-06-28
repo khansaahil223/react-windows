@@ -44,7 +44,7 @@ export const InstalledApplications = [
         rndProps:{
             default:{
                 x:400,
-                y:400,
+                y:180,
                 width:600,
                 height:500                    
             },

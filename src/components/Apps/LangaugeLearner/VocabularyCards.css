@@ -1,0 +1,32 @@
+
+.language-learner-vocabulary-cards{    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;   
+    align-items: center; 
+    justify-content: center;
+}
+.language-learner-vocabulary-cards-main{
+    display:flex;
+    width: 100%;
+    height: 70%;
+    align-items: center;
+}
+.language-learner-vocabulary-cards-navbutton{
+    width: 10%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.language-learner-vocabulary-cards-navbutton:hover{
+    background-color: teal;
+}
+.language-learner-vocabulary-cards-card{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -7,16 +7,17 @@ import Window from './Window';
 
 export default function Desktop(props) {
     const {
-        openWindows        
+        openWindows,
+        toastGeneral        
     } = props    
 
     const contextMenuButtons = [
         {
-            onClick:()=>{console.log("refresh")},
+            onClick:()=>{toastGeneral("Refreshed!",1200)},
             text:"Refresh"
         },
         {
-            onClick:()=>{console.log("properties")},
+            onClick:()=>{toastGeneral("Work in Progress!",1200)},
             text:"Properties"
         }
     ]
@@ -58,6 +59,7 @@ export default function Desktop(props) {
                 return  <Window key={window.windowID} windowObject={window}/>                    
             })
         }
+        <div className="toast-holder"></div>
         </div>
     )
 }

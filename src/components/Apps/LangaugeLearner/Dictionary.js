@@ -1,21 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
+import './Dictionary.css'
+import DictionaryInput from './DictionaryInput'
 
-const {StemmerRu} = require('@nlpjs/lang-ru')
 
-export default function Dictionary() {    
-
-    const [value, setValue] = useState("")    
+export default function Dictionary(props) {    
 
     const wordsFromLocalStorage = JSON.parse(localStorage.getItem("words"))
     const meaningsFromLocalStorage = JSON.parse(localStorage.getItem("meanings"))
-
-    const stemmerRU = new StemmerRu()
+    
     return (
-        <div>
-            <input value={value} onChange={e=>{setValue(e.target.value)}}></input>
-            {            
-                wordsFromLocalStorage?wordsFromLocalStorage.map(w=>{return <li key={w}>{w}:      {meaningsFromLocalStorage[w]}</li>}):null
-            }
+        <div className="language-learner-dictionary">
+            <DictionaryInput toast={props.toast}></DictionaryInput>
+            <div className="language-learner-dictionary-list">
+                {            
+                    wordsFromLocalStorage?wordsFromLocalStorage.map(w=>{
+                        return <div className="language-learner-dictionary-list-item-holder" key={w}>
+                            <div className="language-learner-dictionary-list-word">{w}</div>
+                            <div className="language-learner-dictionary-list-meaning">{meaningsFromLocalStorage[w]}</div>
+                        </div>
+                        }):null
+                }
+            </div>
         </div>
     )
 }

@@ -13,7 +13,7 @@ export default function Toast(props) {
 
     if(visible )
         return (
-            <div className="toast animate__animated animate__bounceInUp">
+            <div className="toast animate__animated animate__bounceInUp" style={props.style}>
                 {message}
             </div>
         )

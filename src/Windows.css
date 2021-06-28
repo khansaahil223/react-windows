@@ -8,8 +8,8 @@
 .start-menu-animation {
     position: fixed;
     bottom:6vh;
-    width: 35vw;
-    height: 65vh;
+    width: 20%;
+    height: 25%;
     background: rgb(0 128 128 / 80%);
     display: flex;
 }
