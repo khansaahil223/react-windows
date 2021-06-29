@@ -5,9 +5,39 @@ import './TodoListApp.css'
 import {MdCheckBox,MdCheckBoxOutlineBlank,/* MdIndeterminateCheckBox */} from 'react-icons/md'
 
 export default function TodoListApp() {
-    const [items, setItems] = useState([])
+    let todosLocalStorage = localStorage.getItem("todos")
+
+    const [items, setItems] = useState(todosLocalStorage?JSON.parse(todosLocalStorage):[])
 
     const [todoInput, setTodoInput] = useState("")
+
+    const saveTodo = (todoItem)=>{
+        let todos = localStorage.getItem("todos")
+        if(!todos){
+            console.log(JSON.stringify([todoItem]))
+            localStorage.setItem("todos",JSON.stringify([todoItem]))
+            setItems([todoItem])
+        }
+        else{
+            todos = JSON.parse(todos).concat(todoItem)
+            localStorage.setItem("todos",JSON.stringify(todos))
+            setItems(todos)
+        }
+    }
+
+    const toggleChecked = (todoItem) => {
+        let todos = localStorage.getItem("todos")
+        if(!todos)
+            return
+        todos = JSON.parse(todos)
+        todos = todos.map(i=>{
+            if(i.id===todoItem.id)
+                i.checked=!i.checked;
+            return i;
+            })
+        setItems(todos)
+        localStorage.setItem("todos",JSON.stringify(todos))
+    }
 
     return (
         <div className="todo-app">
@@ -16,7 +46,11 @@ export default function TodoListApp() {
                     onChange={(e)=>setTodoInput(e.target.value)} placeholder="Enter text here..."></input>
                 <div className="todo-add-button" onClick={()=>{
                     if(todoInput.length>0){
-                        setItems([...items,{text:todoInput,id:items.length+1,checked:false}])
+                        saveTodo({
+                            text:todoInput,
+                            id:items.length+1,
+                            checked:false
+                        })                        
                         setTodoInput("")
                     }
                     }
@@ -31,10 +65,17 @@ export default function TodoListApp() {
                 items.map((item)=>{
                     return <div key={item.id} className="todo-item-holder">
                                 <div className="todo-item-holder-top-row">
+                                    
                                     <div className="todo-item-checkbox" 
-                                        onClick={()=>{setItems(items.map(i=>{if(i.id===item.id)i.checked=!i.checked;return i;}))}}>                                        
+                                        onClick={
+                                            ()=>{
+                                                    toggleChecked(item)
+                                                }
+                                        }>                                        
                                         {item.checked?<MdCheckBox/>:<MdCheckBoxOutlineBlank/>}
                                     </div>
+
+
                                     <div className="todo-item-button" onClick={()=>{setItems(items.filter(i=>{return i.id!==item.id}))}}>X</div>
                                 </div>
                                 <div className="todo-item">{item.text}</div>                                

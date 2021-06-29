@@ -16,7 +16,7 @@
     width: 100%;
     background: white;
     justify-content: space-between;
-    cursor:move;
+    cursor:default;
     align-items: center;
 }
 

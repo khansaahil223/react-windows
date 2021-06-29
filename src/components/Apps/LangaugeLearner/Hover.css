@@ -1,0 +1,29 @@
+.language-learner-hover{
+    position: absolute;
+    z-index: 2;
+    width:50%;
+    height: 50%;
+    background-color: teal;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    left: 25%;
+    top: 25%;
+}
+.language-learner-hover-close{
+    color: red;
+    background-color: #1bacac;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -13px;
+    top: -14px;
+    cursor:default;
+}
+.language-learner-hover-close:hover{
+    background-color: #048888;    
+}

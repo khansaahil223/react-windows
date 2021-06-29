@@ -18,20 +18,22 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:inherit;  
     cursor: default;    
+    overflow: auto;
 }
 
 .calculator-display-text {
     border: 2px solid rgb(6, 70, 70);
     border-top: 0px;
-    height: 12%;
-    background: inherit;    
+    min-height: 12%;
+    background: inherit;
     font-size: xx-large;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:inherit;  
-    cursor: default;    
-    display: flex;  
-    justify-content: flex-end;
+    color: inherit;
+    cursor: default;
+    display: flex;
     align-items: flex-end;
+    overflow: auto;
+    flex-direction: row-reverse;
 }
 
 .calculator-buttons {

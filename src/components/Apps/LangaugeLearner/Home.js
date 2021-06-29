@@ -11,7 +11,7 @@ export default function Home(props) {
             <div className="language-learner-home-grid">
                 {
                     pages.map((page)=>{
-                        return <div className="language-learner-home-grid-item" onClick={()=>{changePage(page)}}>
+                        return <div className="language-learner-home-grid-item" onClick={()=>{changePage(page)}} key={page}>
                         {page}</div>
                     })
                 }

@@ -9,12 +9,14 @@
     overflow: auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .language-learner-dictionary-list-item-holder{
     background-color: teal;
     width:23%;
     height: 125px;
     margin: 2% 1%;
+    max-width: 125px;
 }
 .language-learner-dictionary-list-word{
     height: 50%;

@@ -10,6 +10,8 @@ export default class Calculator extends React.Component {
     constructor(props){
         super(props)
 
+        this.displayTextDivRef = React.createRef()
+
         this.state = {displayText:"0",fullOperation:"",allowConcat:true,allowDot:true}
 
         this.handleKeyInput = this.handleKeyInput.bind(this)
@@ -90,14 +92,16 @@ export default class Calculator extends React.Component {
             const expression = fullOperation.concat(displayText).replaceAll("x","*")    
             if(fullOperation[fullOperation.length-1]==="=")//prevent duplicate equals   
                 return
-            if(expression.indexOf(".")===-1){ // no floating points
-                setDisplayText(eval(expression).toString())
-            }
-            else{
-                setDisplayText(eval(expression).toFixed(2).toString())
-            }
+            
+            setDisplayText(eval(expression).toString())
+
             setFullOperation(expression.replaceAll("*","x")+"=")
             setAllowConcat(false)
+
+            
+            console.log(this.displayTextDivRef )   
+            this.displayTextDivRef.current.scrollLeft = 20         
+
             
         }
         if(keyText==="signChange") {
@@ -138,8 +142,7 @@ export default class Calculator extends React.Component {
 
         return (
             <div className="calculator" tabIndex={-1}   
-                onKeyDown={(e)=>{  
-                    console.log(e.code)                        
+                onKeyDown={(e)=>{                                             
                     if(e.code==="Digit0" || e.code==="Numpad0") {                
                         this.handleKeyInput("0")
                     }
@@ -185,16 +188,19 @@ export default class Calculator extends React.Component {
                     if(e.code==="KeyX" || e.code==="NumpadMultiply"){
                         this.handleKeyInput("*")
                     }
+                    if(e.code==="Slash" || e.code==="NumpadDivide"){
+                        this.handleKeyInput("/")
+                    }
                     if(e.code==="Period" || e.code==="NumpadDecimal"){
                         this.handleKeyInput(".")
                     }
-                    if(e.code==="Enter" || e.code==="NumpadEnter"){
+                    if(e.code==="Enter" || e.code==="NumpadEnter" || e.code==="Equal"){
                         this.handleKeyInput("=")
                     }
                 }}  
             >
                 <div className="calculator-display-full-operation">{fullOperation}</div>
-                <div className="calculator-display-text">{displayText}</div>
+                <div className="calculator-display-text" ref={this.displayTextDivRef}>{displayText}</div>
                 <div className="calculator-buttons">
                     <div className="calculator-button" onClick={()=>{this.handleKeyInput("%")}}>%</div>
                     <div className="calculator-button" onClick={()=>{this.handleKeyInput("CE")}}>CE</div>

@@ -32,6 +32,6 @@
 
 .language-learner-content {
     float: left;
-    height: 100%;
+    height: calc(100% - 40px);
     user-select: text;
 }

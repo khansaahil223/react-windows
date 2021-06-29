@@ -52,20 +52,24 @@ export default class Taskbar extends React.Component {
                                 {
                                     this.uniqueWindowNames = this.uniqueWindowNames.concat(window.name)
                                     let style = {}
+
                                     if(window.active===true){
                                         style={boxShadow: "#cddc39 0px 0px 0px 10px"}
                                     }
+
                                     return  <IconContext.Provider 
                                                 value={{ color: "gold", className: "taskbar-icon",style:style}} 
                                                 key={window.windowID} 
                                                 >
                                                 <window.Icon onClick={()=>{
                                                     this.setState({showTaskbarPreview:true})
+
                                                     if(window.minimized===true){
                                                         window.updateWindowProperty("animation","animate__fadeInBottomLeft")
                                                         window.updateWindowProperty("minimized",!window.minimized)
-                                                        window.activateWindow()
+                                                        window.activateWindow()                                                        
                                                     }
+
                                                     else if(window.minimized===false){
                                                         window.updateWindowProperty("animation","animate__fadeOutBottomLeft")
                                                         setTimeout(()=>window.updateWindowProperty("minimized",!window.minimized),0)

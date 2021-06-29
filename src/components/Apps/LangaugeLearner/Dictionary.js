@@ -10,7 +10,7 @@ export default function Dictionary(props) {
     
     return (
         <div className="language-learner-dictionary">
-            <DictionaryInput toast={props.toast}></DictionaryInput>
+            <DictionaryInput toast={props.toast} {...props}></DictionaryInput>
             <div className="language-learner-dictionary-list">
                 {            
                     wordsFromLocalStorage?wordsFromLocalStorage.map(w=>{

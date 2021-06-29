@@ -8,6 +8,8 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import Dictionary from './Dictionary'
 import Reading from './Reading'
 import VocabularyCards from './VocabularyCards'
+import LanguageSelect from './LanguageSelect'
+import Hover from './Hover'
 
 export default class LanguageLearner extends React.Component {
     
@@ -15,10 +17,20 @@ export default class LanguageLearner extends React.Component {
 
     constructor(props){
         super(props)
-        this.state={currentPage:"home",showSidebar:false,sidebarAnimation:"animate__zoomOutLeft"}
+        const knownLanguage = localStorage.getItem("knownLanguage")
+        const studyLanguage = localStorage.getItem("studyLanguage")
+        this.state={
+            currentPage:"home",
+            showSidebar:false,
+            sidebarAnimation:"animate__zoomOutLeft",            
+            knownLanguage:knownLanguage?knownLanguage:"de",
+            studyLanguage:studyLanguage?studyLanguage:"en",
+            showHover:false,
+            hoverAnimation:"animate__pulse"
+        }        
     }
 
-    render(){
+    render(){        
         return <div className = "language-learner">
             <div className="language-learner-hamburger" 
                 onClick={()=>
@@ -57,13 +69,58 @@ export default class LanguageLearner extends React.Component {
                 </div>
                 :null
             }        
+
+
+            <LanguageSelect studyLanguage={this.state.studyLanguage} setStudyLanguage={(val)=>{this.setState({studyLanguage:val})}}
+                            knownLanguage={this.state.knownLanguage} setKnownLanguage={(val)=>{this.setState({knownLanguage:val})}}/>
+
+            {
+                this.state.showHover?<Hover word={this.state.hoverWord} 
+                                            knownLanguage={this.state.knownLanguage}
+                                            studyLanguage={this.state.studyLanguage}
+                                            setHoverWord={(val)=>{this.setState({hoverWord:val})}}
+                                            setShowHover={(val)=>{this.setState({showHover:val})}}
+                                            hoverAnimation={this.state.hoverAnimation}
+                                            setHoverAnimation={(val)=>{this.setState({hoverAnimation:val})}}
+                                            toast={this.props.toast}
+                                            ></Hover>:null
+            }
             <div className="language-learner-content" style={this.state.showSidebar?{width:"67%",left:"34%"}:{width:"100%",left:0}}>
             {
                 {
-                    'home':<Home changePage={(page)=>this.setState({currentPage:page})} pages={this.pages} toast={this.props.toast}></Home>,
-                    'dictionary':<Dictionary toast={this.props.toast}></Dictionary>,
-                    "reading":<Reading toast={this.props.toast}></Reading>,
-                    'vocabulary cards':<VocabularyCards toast={this.props.toast}/>
+                    'home':<Home changePage={(page)=>this.setState({currentPage:page})}                         
+                                    pages={this.pages} 
+                                    toast={this.props.toast}
+                                    studyLanguage={this.state.studyLanguage} knownLanguage={this.state.knownLanguage}
+                                    setShowHover={(val)=>{this.setState({showHover:val})}}
+                                    hoverAnimation={this.state.hoverAnimation}
+                                    setHoverAnimation={(val)=>{this.setState({hoverAnimation:val})}}
+                                    setHoverWord={(val)=>{this.setState({hoverWord:val})}}
+                                    ></Home>,
+                    'dictionary':<Dictionary toast={this.props.toast} 
+                            studyLanguage={this.state.studyLanguage} 
+                            knownLanguage={this.state.knownLanguage}
+                            setShowHover={(val)=>{this.setState({showHover:val})}}
+                            hoverAnimation={this.state.hoverAnimation}
+                            setHoverAnimation={(val)=>{this.setState({hoverAnimation:val})}}
+                            setHoverWord={(val)=>{this.setState({hoverWord:val})}}
+                            />,
+                    "reading":<Reading toast={this.props.toast} 
+                                studyLanguage={this.state.studyLanguage} 
+                                knownLanguage={this.state.knownLanguage}
+                                setShowHover={(val)=>{this.setState({showHover:val})}}
+                                hoverAnimation={this.state.hoverAnimation}
+                                setHoverAnimation={(val)=>{this.setState({hoverAnimation:val})}}
+                                setHoverWord={(val)=>{this.setState({hoverWord:val})}}
+                                />,
+                    'vocabulary cards':<VocabularyCards toast={this.props.toast} 
+                                            studyLanguage={this.state.studyLanguage} 
+                                            knownLanguage={this.state.knownLanguage}
+                                            setShowHover={(val)=>{this.setState({showHover:val})}}
+                                            hoverAnimation={this.state.hoverAnimation}
+                                            setHoverAnimation={(val)=>{this.setState({hoverAnimation:val})}}
+                                            setHoverWord={(val)=>{this.setState({hoverWord:val})}}
+                                            />
                 }[this.state.currentPage]
             }
             </div>            

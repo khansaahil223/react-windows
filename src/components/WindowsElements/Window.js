@@ -90,7 +90,7 @@ export default function Window(props) {
 
                             </div>
                         </div>
-                        <div className="window-content">
+                        <div className="window-content" onContextMenu={e=>e.stopPropagation()}>
                             <windowObject.Content></windowObject.Content>
                         </div>
                         <div className={`${windowObject.windowID}toast`}></div>

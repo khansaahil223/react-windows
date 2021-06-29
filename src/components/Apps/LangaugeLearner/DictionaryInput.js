@@ -2,14 +2,10 @@ import React, { useState } from 'react'
 import './DictionaryInput.css'
 import WordInputForm from './WordInputForm'
 
-const {StemmerRu} = require('@nlpjs/lang-ru')
+const {stem} = require('@nlpjs/lang-all')
 export default function DictionaryInput(props) {
-    const [word, setWord] = useState("")        
-
-    const [showHover, setShowHover] = useState(false)
-    const [hoverAnimation, setHoverAnimation] = useState("animate__pulse")
-
-    const stemmer = new StemmerRu()
+    const [word, setWord] = useState("")            
+    const {showHover, setShowHover,hoverAnimation, setHoverAnimation,studyLanguage,setHoverWord} = props    
 
     return (
         <div className="language-learner-dictionary-inputs-holder">
@@ -19,6 +15,7 @@ export default function DictionaryInput(props) {
             </div>
 
             <div className="language-learner-dictionary-input-button" onClick={()=>{
+                setHoverWord(word)
                 setHoverAnimation("animate__pulse")
                 setShowHover(true);
             }}>
@@ -27,7 +24,7 @@ export default function DictionaryInput(props) {
             {
                 showHover?<React.Fragment>
                     <div className={`language-learner-reading-hover animate__animated ${hoverAnimation}`} >
-                        <WordInputForm toast={props.toast} selectedWord={word} wordStem = {stemmer.stemWord(word).replace(/[^\u0400-\u04FF]/,'')} setShowHover={setShowHover}></WordInputForm>
+                        <WordInputForm toast={props.toast} selectedWord={word} wordStem = {stem(word,studyLanguage)} setShowHover={setShowHover}></WordInputForm>
                         <div className="language-learner-reading-hover-close" onClick={
                             ()=>{
                                 setHoverAnimation("animate__zoomOut")

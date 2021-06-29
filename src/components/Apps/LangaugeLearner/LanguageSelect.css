@@ -1,0 +1,29 @@
+.language-learner-language-select{
+    display: flex;    
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 40px;
+}
+.language-learner-language-select-input-holder{
+    display: flex;    
+    margin:2%;
+}
+.language-learner-language-select-label{
+    font-size: x-small;
+    margin:2%;
+    min-width: 50px;
+}
+.language-learner-language-select-input{
+    font-size: x-small;
+    margin:2%;
+}
+.language-learner-language-select-button {
+    font-size: x-small;
+    text-transform: uppercase;
+    padding: 5px;
+    background: teal;
+}
+.language-learner-language-select-button:hover {
+    background-color: rgb(17, 98, 98);
+}
