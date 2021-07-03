@@ -200,7 +200,7 @@ export default class Windows extends Component {
           isVisible={this.state.startMenuShowing}
           className="start-menu-animation"
         >
-          <Startmenu openWindow={this.openWindow} setStartMenuShowing={this.setStartMenuShowing} />
+            <Startmenu openWindow={this.openWindow} setStartMenuShowing={this.setStartMenuShowing} />
         </Animated>
 
         <Taskbar

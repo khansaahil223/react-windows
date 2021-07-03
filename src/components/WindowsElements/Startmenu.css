@@ -19,6 +19,21 @@
     cursor:default;
     margin:10% 4%;
     padding:5% 0%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.start-menu-list-label{
+    width: 80%;
+    display: flex;
+    font-size: x-small;
+    padding:4px;
+}
+
+.start-menu-icon{
+    width: 20%;
+    height:50px;
 }
 
 .start-menu-right{

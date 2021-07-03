@@ -3,6 +3,7 @@ import React/* ,{useState} */ from 'react'
 import './Startmenu.css'
 
 import { InstalledApplications } from '../GlobalVariables'
+import { IconContext } from 'react-icons/lib'
 
 export default function Startmenu(props) {
 
@@ -22,7 +23,14 @@ export default function Startmenu(props) {
                                 openWindow(ia)
                                 setStartMenuShowing(false)
                             }
-                        }>{ia.name}</div>
+                        }>
+                        <IconContext.Provider value={{style:{size:'3em'},className:"start-menu-icon"}}>
+                            <ia.Icon></ia.Icon>
+                        </IconContext.Provider>
+                        <div className="start-menu-list-label">
+                            {ia.name}
+                        </div>
+                        </div>
                 }))
             }
                 {/* <li onClick={()=>{
