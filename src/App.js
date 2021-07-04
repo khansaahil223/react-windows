@@ -5,9 +5,11 @@ import Windows from './Windows'
 
 export default function App() {    
 
-    const [screenWidth, setScreenWidth] = useState(visualViewport.width)
+    // const visualViewport = Window.visualViewport
+    
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
-    visualViewport.addEventListener("resize",()=>{setScreenWidth(visualViewport.width)})
+    window.addEventListener("resize",()=>{setScreenWidth(window.innerWidth)})
     
     return <React.Fragment>
         {

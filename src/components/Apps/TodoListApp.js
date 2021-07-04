@@ -76,7 +76,12 @@ export default function TodoListApp() {
                                     </div>
 
 
-                                    <div className="todo-item-button" onClick={()=>{setItems(items.filter(i=>{return i.id!==item.id}))}}>X</div>
+                                    <div className="todo-item-button" 
+                                    onClick={()=>{
+                                        const todos = items.filter(i=>{return i.id!==item.id})
+                                        localStorage.setItem("todos",JSON.stringify(todos))
+                                        setItems(todos)                                        
+                                        }}>X</div>
                                 </div>
                                 <div className="todo-item">{item.text}</div>                                
                         </div>
