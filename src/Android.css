@@ -12,11 +12,11 @@
   --animate-duration: .2s!important;
 }
 .android-app-content{
-  height: 90%;
+  height: 84vh;
   width: 100%;  
   background-color: grey;
 }
 .android-bottom-bar{
-  height: 10%;
+  height: 8vh;
   width: 100%;
 }

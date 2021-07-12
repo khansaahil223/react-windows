@@ -1,6 +1,8 @@
 import React from 'react'
 import './LanguageSelect.css'
 
+import firebase from 'firebase/app'
+
 export default function LanguageSelect(props) {
 
     const {
@@ -21,6 +23,10 @@ export default function LanguageSelect(props) {
         <option value="tr">Turkish</option>
     </React.Fragment>    
 
+    if(!knownLanguage || !studyLanguage){
+        return <progress></progress>
+    }
+
     return (
         <div className="language-learner-language-select">
             <div className="language-learner-language-select-input-holder">
@@ -37,8 +43,7 @@ export default function LanguageSelect(props) {
             </div>
             <div className="language-learner-language-select-button" 
                 onClick={()=>{
-                    localStorage.setItem("knownLanguage",knownLanguage)
-                    localStorage.setItem("studyLanguage",studyLanguage)
+                    firebase.database().ref("languages").set({known:knownLanguage,study:studyLanguage})                    
                 }}
             >
                 Save

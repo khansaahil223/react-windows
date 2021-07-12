@@ -10,12 +10,12 @@
     width:80%;
     height: 45%;
     font-size: x-large;
-    resize: none;
+    resize: vertical;
 }
 .language-learner-reading-tokens {
     display: flex;
     width:80%;
-    height: 45%;
+    min-height: 45%;
     flex-wrap: wrap;
     overflow: auto;
     scroll-behavior: smooth;

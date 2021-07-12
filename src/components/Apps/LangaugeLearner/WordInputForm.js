@@ -6,7 +6,7 @@ import { GrRevert } from 'react-icons/gr'
 import './WordInputForm.css'
 
 import {stem} from '@nlpjs/lang-all'
-
+import firebase from 'firebase'
 const translate = require("translate")
 translate.engine="libre"
 
@@ -67,34 +67,32 @@ export default function WordInputForm(props) {
            
             <div onClick={
                 e=>{
-                            
-                    let words = localStorage.getItem("words")
-                    let stem = wordStem   
-                    const toastDuration = 1200                         
-                    if(words){                                
-                        words = JSON.parse(words)                        
+                    const firebaseDictionaryRef = firebase.database().ref("dictionary")
+
+                    firebaseDictionaryRef.on('value',snapshot=>{
+                        const data = snapshot.val()
+                        const dictionary = Object.keys(data).map(id=>{return data[id]})
+
+                        const words = dictionary.map(x=>{return x.word})
+
+                        let stem = wordStem   
+                        const toastDuration = 1200                         
+                                           
                         if(words.indexOf(stem)===-1){
-                            words = words.concat(stem)
-                            localStorage.setItem("words",JSON.stringify(words))
+                            firebaseDictionaryRef.push().set({word:stem,meaning:translation})
                             toast("word saved!",toastDuration) 
                             setVisible(false)  
                         }            
                         else{
                             toast("word already exists in dictionary",toastDuration)                                    
                         }                    
-                    }
-                    else{
-                        localStorage.setItem("words",JSON.stringify([stem]))                                
-                    }
-                    if(!localStorage.getItem("meanings")){
-                        localStorage.setItem("meanings",JSON.stringify({}))
-                    }
-                    const meanings = JSON.parse(localStorage.getItem("meanings"))
-                    meanings[wordStem]=translation
-                    localStorage.setItem("meanings",JSON.stringify(meanings))                            
-                    e.stopPropagation()
+                    })
+                                                
+                        e.stopPropagation()
+                    }                   
+                                                                    
                 }
-            } className="language-learner-word-input-button">Add to dictionary</div>
+             className="language-learner-word-input-button">Add to dictionary</div>
         </div>
     )
 }

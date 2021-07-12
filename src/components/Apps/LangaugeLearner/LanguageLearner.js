@@ -10,25 +10,32 @@ import Reading from './Reading'
 import VocabularyCards from './VocabularyCards'
 import LanguageSelect from './LanguageSelect'
 import Hover from './Hover'
+import ReadingLists from './ReadingLists'
+
+import firebase from 'firebase/app'
 
 export default class LanguageLearner extends React.Component {
     
-    pages = ["home","dictionary","reading","vocabulary cards"]
-
+    pages = ["home","dictionary","reading","vocabulary cards","reading lists"]
+    pagesIcon = []
+    
     constructor(props){
-        super(props)
-        const knownLanguage = localStorage.getItem("knownLanguage")
-        const studyLanguage = localStorage.getItem("studyLanguage")
+        super(props)        
         this.state={
             currentPage:"home",
             showSidebar:false,
-            sidebarAnimation:"animate__zoomOutLeft",            
-            knownLanguage:knownLanguage?knownLanguage:"de",
-            studyLanguage:studyLanguage?studyLanguage:"en",
+            sidebarAnimation:"animate__zoomOutLeft",                        
             showHover:false,
             hoverAnimation:"animate__pulse"
         }        
-    }
+
+        firebase.database().ref("languages").on('value',snapshot=>{
+            const data = snapshot.val()
+            this.state.knownLanguage = data.known
+            this.state.studyLanguage = data.study
+        })        
+
+    }    
 
     render(){        
         return <div className = "language-learner">
@@ -120,6 +127,15 @@ export default class LanguageLearner extends React.Component {
                                             hoverAnimation={this.state.hoverAnimation}
                                             setHoverAnimation={(val)=>{this.setState({hoverAnimation:val})}}
                                             setHoverWord={(val)=>{this.setState({hoverWord:val})}}
+                                            />,
+                    'reading lists':<ReadingLists toast={this.props.toast} 
+                                            studyLanguage={this.state.studyLanguage} 
+                                            knownLanguage={this.state.knownLanguage}
+                                            setShowHover={(val)=>{this.setState({showHover:val})}}
+                                            hoverAnimation={this.state.hoverAnimation}
+                                            setHoverAnimation={(val)=>{this.setState({hoverAnimation:val})}}
+                                            setHoverWord={(val)=>{this.setState({hoverWord:val})}}
+                                            changePage={(page)=>this.setState({currentPage:page})}
                                             />
                 }[this.state.currentPage]
             }
